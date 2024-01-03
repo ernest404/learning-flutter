@@ -10,7 +10,7 @@ Multiline
 comment
 */
 
-void main(List<String> args) {
+void main() {
   //serves as the entry point for the execution of a Dart program
   print("hello world"); //all expressions end with semi colon
 }
