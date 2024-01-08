@@ -23,6 +23,8 @@ main() {
 //   // function body
 // }
 
+// Functions can take parameters, and you have to specify their types.
+// Functions return a value the return keyword is used if it is a concrete value from an expression, no return for effects such as print.
 dynamic square(var num) {
   return num * num;
 }
@@ -33,10 +35,15 @@ void showOutput([String msg = 'Hello']) {
 }
 
 // Arrow function definition
+// The  => syntax specifies the return type.
 dynamic squareArrow(var num) => num * num;
 
 // Anonymous functions
 var show = (n) => print(n * 2);
+
+var show2 = (n) {
+  return n * 2;
+};
 
 // Function with named parameter
 dynamic sum({var num1, var num2}) {
