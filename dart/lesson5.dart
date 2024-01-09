@@ -4,7 +4,7 @@
 import 'dart:js_util';
 
 main() {
-  // The const keyword is used to declare compile-time constants. The value of a const variable must be known at compile-time.
+  //
   const pi = 3.14;
   print(pi);
   // pi = 3; error
