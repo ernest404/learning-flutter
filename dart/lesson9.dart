@@ -1,49 +1,87 @@
-// Object-oriented programming (OOP) is a programming paradigm based on the concept of "objects,"
-//which can contain data in the form of fields (often known as attributes or properties) and code
-//in the form of methods (functions or procedures). Dart is an object-oriented language,
-//which makes it a natural fit for developing Flutter applications. Here are some of the
-//most important OOP concepts in Dart that apply to Flutter development:
+// Object-oriented programming
 
 // Classes and Objects: In Dart, a class is a blueprint for creating objects.
-//Objects are instances of classes and can represent real-world entities.
+//Objects are instances of classes and encapsulate data and behavior.
 //Flutter uses classes extensively to represent widgets and other elements.
 
 class Car {
-  String make;
-  String model;
+  // Instance variables
+  String? make; //Declare instance variable, initially null.
+  String? model;
 
+  // Static variable
+  // Variable belonging to the class itself.
+  static int year = 2024;
+
+  // Static method
+  // can only access and modify static variable
+  static void changeYear(int newYear) {
+    year = newYear;
+  }
+
+  // Constructor
   Car(this.make, this.model);
 
+  //named constructor
+  //Use a named constructor to implement multiple constructors for a class or to provide extra clarity.
+  Car.Corolla() {
+    this.make = "Toyota";
+    this.model = "Corolla";
+  }
+
+  // Methods
   void drive() {
     print('The $make $model is driving.');
   }
 }
-// Inheritance: In Dart, classes can inherit properties and methods from other classes. This is useful in Flutter for creating custom widgets that share common functionality with base widgets.
 
+// Inheritance: In Dart, classes can inherit properties and methods from other classes.
+// keyword extends indicates inheritance.
 class ElectricCar extends Car {
-  int batteryLevel;
+  int batteryLevel; //Additional field inroduced by ElectricCar class
 
-  ElectricCar(String make, String model, this.batteryLevel)
-      : super(make, model);
+  ElectricCar(String make, String model,
+      this.batteryLevel) //This constructor initializes an ElectricCar object
+      : super(make,
+            model); // uses the super keyword to call the constructor of the superclass (Car).
 
   void recharge() {
+    //Additional method introduced by ElectricCar class
     print('Recharging battery to 100%.');
   }
 }
-// Mixins: Dart uses mixins for code reuse when you want to avoid the complexity of a class hierarchy. This is useful in Flutter for adding features to widgets without creating long inheritance chains.
+
+// Mixins: Dart uses mixins for code reuse when you want to avoid the complexity of a class hierarchy.
+class Scooter {
+  void start() {
+    print('Scooter started.');
+  }
+
+  void stop() {
+    print('Scooter stopped.');
+  }
+}
 
 mixin Electric {
-  int batteryLevel;
+  int batteryLevel = 0;
 
   void recharge() {
     print('Recharging battery to 100%.');
+    batteryLevel = 100;
   }
 }
 
+// Create an ElectricScooter class that extends Scooter and includes the Electric mixin
 class ElectricScooter extends Scooter with Electric {
   // Additional methods and properties
+  void checkBattery() {
+    print('Battery level: $batteryLevel');
+  }
 }
-// Interfaces: Dart does not have explicit interfaces, but every class defines an interface. This allows for the use of abstract classes to define a contract without implementing the full functionality. Flutter uses this for callbacks and other types that need to be implemented by classes.
+
+// Interfaces: Dart does not have explicit interfaces, but every class defines an interface.
+//This allows for the use of abstract classes to define a contract without implementing the
+//full functionality. Flutter uses this for callbacks and other types that need to be implemented by classes.
 
 abstract class Vehicle {
   void drive();
@@ -51,7 +89,8 @@ abstract class Vehicle {
 }
 
 class Bike implements Vehicle {
-  @override
+  //A class can implement multiple interfaces, allowing objects of that class to be treated as instances of those interfaces.
+  @override //Method overriding: a subclass can provide a specific implementation for a method that is already defined in its superclass
   void drive() {
     print('Bike is moving');
   }
@@ -61,50 +100,27 @@ class Bike implements Vehicle {
     print('Bike has stopped');
   }
 }
-// Encapsulation: Encapsulation is the bundling of data with the methods that operate on that data. It restricts direct access to some of an object's components, which is a fundamental part of the OOP concept. Dart uses private and public access levels, controlled using underscores (_) for private members.
 
-class BankAccount {
-  String _accountNumber;
-  double _balance;
+void main() {
+  // Instantiating a object
+  Car myDaily = Car("Honda", "Fit");
+  // can also be infered
+  var myOffRoad = Car("Suzuki", "Jimney");
+  // Instantiate using a named constructor
+  var mostPopular = Car.Corolla();
 
-  BankAccount(this._accountNumber, this._balance);
+  mostPopular.drive();
 
-  void deposit(double amount) {
-    _balance += amount;
-  }
+// Mixin
+  // Create an instance of ElectricScooter
+  var myScooter = ElectricScooter();
 
-  double get balance => _balance;
+  // Access methods from Scooter class
+  myScooter.start();
+  myScooter.stop();
+
+  myScooter.checkBattery();
+  // Access methods from Electric mixin
+  myScooter.recharge();
+  myScooter.checkBattery();
 }
-// Polymorphism: Polymorphism allows objects to be treated as instances of their parent class rather than their actual class. This leads to flexibility and the ability to call the same method on different objects and have each of them respond in their own way. Flutter utilizes polymorphism to handle events and interactions in a generic way.
-
-class Animal {
-  void speak() {
-    print('The animal makes a sound');
-  }
-}
-
-class Dog extends Animal {
-  @override
-  void speak() {
-    print('The dog barks');
-  }
-}
-
-class Cat extends Animal {
-  @override
-  void speak() {
-    print('The cat meows');
-  }
-}
-// Constructors: Constructors are special methods of a class that get called when a new instance of the class is created. Dart provides various types of constructors including default, named, constant and factory constructors which can be used to initialize variables, constraints, or to return instances of a class. This is frequently used in Flutter to initialize widgets with different configurations.
-
-class Widget {
-  String name;
-
-  Widget(this.name);
-
-  Widget.hidden() {
-    name = 'hidden widget';
-  }
-}
-// These OOP principles allow Flutter to be flexible and powerful, creating a widget hierarchy and reusing code efficiently. Understanding OOP in Dart is crucial for mastering Flutter app development.
