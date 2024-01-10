@@ -1,6 +1,7 @@
 // Polymorphism: Polymorphism allows objects to be treated as instances of their parent class rather than their actual class.
 //This leads to flexibility and the ability to call the same method on different objects and have each of them respond
 //in their own way.
+// Polymorphism means many forms.
 
 // Metaphor: Polymorphism in programming can be likened to a versatile actor on a stage who can seamlessly take on different roles
 // in various plays. Just as this actor adapts to different characters and scripts, polymorphic objects in code can gracefully
