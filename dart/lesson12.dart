@@ -52,3 +52,9 @@ void main() {
   (myDog as Dog).fetch(); // Output: Fetching the ball.
   (myCat as Cat).climbTree(); // Output: Climbing the tree.
 }
+
+// Method Overloading:
+// having multiple methods with the same name but with different signature(number, type and order of parameters).
+
+// Method Overridding:
+// When a subclass contains a method with the same name and signature as in the super class.
