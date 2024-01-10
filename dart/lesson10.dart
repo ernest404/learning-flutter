@@ -1,3 +1,7 @@
+// Encapsulation: Encapsulation is the bundling of data with the methods that operate on that data.
+//It restricts direct access to some of an object's components, which is a fundamental part of the OOP concept.
+//Dart uses private and public access levels, controlled using underscores (_) for private members.
+
 // Private Variables
 // Purpose we don't the program to use them directly outside the class.
 // getters and setters are special methods used to access and modify the values of class fields (instance variables).
