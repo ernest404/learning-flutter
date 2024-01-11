@@ -32,23 +32,29 @@ The async keyword is used to define functions that can perform asynchronous oper
 functions to wait for a Future to complete without blocking the rest of the program.
  */
 
+// Import statements
+// The dart: scheme is used to import core libraries that are bundled with the Dart SDK.
+// The package: scheme is used to import libraries that are external to the Dart SDK, commonly referred to as "packages."
+// The package: scheme is typically used for dependencies listed in the pubspec.yaml file, which is the package configuration file for Dart projects.
+
 import 'dart:io';
 import 'dart:async';
+import 'package:http/http.dart';
 
 void main() {
-  Future<dynamic> changeNowGetListAllAvailablePairs() async {
-    // Add your function code here!
-    var request = http.Request(
-        'GET',
-        Uri.parse(
-            'https://api.changenow.io/v1/market-info/available-pairs/?includePartners=false'));
+  // Future<dynamic> changeNowGetListAllAvailablePairs() async {
+  //   // Add your function code here!
+  //   var request = http.Request(
+  //       'GET',
+  //       Uri.parse(
+  //           'https://api.changenow.io/v1/market-info/available-pairs/?includePartners=false'));
 
-    http.StreamedResponse response = await request.send();
+  //   http.StreamedResponse response = await request.send();
 
-    if (response.statusCode == 200) {
-      return await response.stream.bytesToString();
-    } else {
-      return response.reasonPhrase;
-    }
-  }
+  //   if (response.statusCode == 200) {
+  //     return await response.stream.bytesToString();
+  //   } else {
+  //     return response.reasonPhrase;
+  //   }
+  // }
 }
